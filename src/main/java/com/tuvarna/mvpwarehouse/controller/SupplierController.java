@@ -3,7 +3,7 @@ package com.tuvarna.mvpwarehouse.controller;
 import com.tuvarna.mvpwarehouse.dto.SupplierCreateRequest;
 import com.tuvarna.mvpwarehouse.dto.SupplierResponse;
 import com.tuvarna.mvpwarehouse.dto.SupplierUpdateRequest;
-import com.tuvarna.mvpwarehouse.service.SupplierService;
+import com.tuvarna.mvpwarehouse.service.ISupplierService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,9 +15,9 @@ import java.util.List;
 @RequestMapping("/api/suppliers")
 public class SupplierController {
 
-    private final SupplierService service;
+    private final ISupplierService service;
 
-    public SupplierController(SupplierService service) {
+    public SupplierController(ISupplierService service) {
         this.service = service;
     }
 

@@ -6,7 +6,7 @@ import com.tuvarna.mvpwarehouse.dto.SupplierUpdateRequest;
 
 import java.util.List;
 
-public interface SupplierService {
+public interface ISupplierService {
     SupplierResponse create(SupplierCreateRequest request);
 
     SupplierResponse getById(Long id);

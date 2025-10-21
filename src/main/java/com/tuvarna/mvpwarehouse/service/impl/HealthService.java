@@ -1,11 +1,11 @@
 package com.tuvarna.mvpwarehouse.service.impl;
 
 import com.tuvarna.mvpwarehouse.dto.HealthResponse;
-import com.tuvarna.mvpwarehouse.service.HealthService;
+import com.tuvarna.mvpwarehouse.service.IHealthService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class HealthServiceImpl implements HealthService {
+public class HealthService implements IHealthService {
 
     @Override
     public HealthResponse health() {
