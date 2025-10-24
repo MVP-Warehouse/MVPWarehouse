@@ -5,8 +5,8 @@ import com.tuvarna.mvpwarehouse.dto.SupplierResponse;
 import com.tuvarna.mvpwarehouse.dto.SupplierUpdateRequest;
 import com.tuvarna.mvpwarehouse.exception.NotFoundException;
 import com.tuvarna.mvpwarehouse.model.Supplier;
-import com.tuvarna.mvpwarehouse.repository.SupplierRepository;
-import com.tuvarna.mvpwarehouse.service.SupplierService;
+import com.tuvarna.mvpwarehouse.repository.ISupplierRepository;
+import com.tuvarna.mvpwarehouse.service.ISupplierService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,11 +14,11 @@ import java.util.List;
 
 @Service
 @Transactional
-public class SupplierServiceImpl implements SupplierService {
+public class SupplierService implements ISupplierService {
 
-    private final SupplierRepository repository;
+    private final ISupplierRepository repository;
 
-    public SupplierServiceImpl(SupplierRepository repository) {
+    public SupplierService(ISupplierRepository repository) {
         this.repository = repository;
     }
 
@@ -27,9 +27,11 @@ public class SupplierServiceImpl implements SupplierService {
         if (request.getName() == null || request.getName().isBlank()) {
             throw new IllegalArgumentException("Supplier name is required");
         }
+
         if (repository.existsByNameIgnoreCase(request.getName())) {
             throw new IllegalArgumentException("Supplier with the same name already exists");
         }
+
         Supplier supplierToSave = new Supplier(request.getName(), request.getContactEmail(), request.getPhone());
         Supplier saved = repository.save(supplierToSave);
         return toResponse(saved);
